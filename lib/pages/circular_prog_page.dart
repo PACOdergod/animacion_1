@@ -8,6 +8,9 @@ class CircularProgPage extends StatefulWidget {
 }
 
 class _CircularProgPageState extends State<CircularProgPage> {
+  //Defininiendo el porcentaje
+  double porcentaje = 10.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +21,20 @@ class _CircularProgPageState extends State<CircularProgPage> {
         width: 300,
         // color: Colors.red,
         child: CustomPaint(
-          painter: _MiProgPainter(80),
+          painter: _MiProgPainter(porcentaje),
         ),
       )),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.refresh),
+          backgroundColor: Colors.blue,
+          onPressed: () {
+            setState(() {
+              if (porcentaje < 100)
+                porcentaje += 10;
+              else
+                porcentaje = 0;
+            });
+          }),
     );
   }
 }
